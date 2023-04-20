@@ -4,23 +4,22 @@ import { Props } from "./models";
 import "./style.less";
 
 export const Button: FC<Props> = ({
-  type,
-  shape,
-  bg,
-  border,
+  htmlType = "submit",
   className,
+  type = "primary",
+  shape = "round",
   children,
 }) => {
   const prefixCls = "btn";
   const classes = classNames(
     prefixCls,
     {
+      [`${prefixCls}-${htmlType}`]: htmlType,
       [`${prefixCls}-${type}`]: type,
       [`${prefixCls}-${shape}`]: shape,
-      [`${prefixCls}-border-${border}`]: border,
     },
     className
   );
 
-  return <button>{children}</button>;
+  return <button className={classes}>{children}</button>;
 };

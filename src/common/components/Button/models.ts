@@ -1,18 +1,13 @@
 import { ReactNode } from "react";
 
-export type Type = "submit";
-
-export type Shape = "round";
-
-export type Bg = "transparent";
-
-export type Border = "danger" | "primary";
+type HtmlType = "submit";
+type Type = "primary";
+type Shape = 'round';
 
 export interface Props {
-  type: Type;
+  htmlType?: HtmlType;
+  type?: Type;
   shape?: Shape;
-  bg?: Bg;
-  border?: Border;
-  children: string | ReactNode;
   className?: string;
+  children: string | ReactNode;
 }
