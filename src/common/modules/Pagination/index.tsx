@@ -1,12 +1,8 @@
 import { FC } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { Props } from "./models";
 
-interface Props {
-  logsPerPage: number;
-  totalLogs: number;
-  paginate: (number: number) => void;
-  previousPage: () => void;
-  nextPage: () => void;
-}
+import "./style.less";
 
 const Pagination: FC<Props> = ({
   logsPerPage,
@@ -24,8 +20,8 @@ const Pagination: FC<Props> = ({
   return (
     <div className="pagination-container">
       <ul className="pagination">
-        <li onClick={previousPage} className="page-number">
-          Prev
+        <li onClick={previousPage} className="page-number" key="page-prev">
+          <FaChevronLeft />
         </li>
         {pageNumbers.map((number) => (
           <li
@@ -36,8 +32,8 @@ const Pagination: FC<Props> = ({
             {number}
           </li>
         ))}
-        <li onClick={nextPage} className="page-number">
-          Next
+        <li onClick={nextPage} className="page-number" key="page-next">
+          <FaChevronRight />
         </li>
       </ul>
     </div>
