@@ -9,14 +9,15 @@
   line-height: 20px;
   cursor: pointer;
   transition: .3s;
+  border-radius: 6px;
   &-primary{
     background: @primary;
     border: 1px solid @primary;
+    &:hover{
+      background: @primary-hover;
+    }
   }
   &-round{
     border-radius: 28px;
-  }
-  &:hover{
-    transform: translateY(-1px);
   }
 }

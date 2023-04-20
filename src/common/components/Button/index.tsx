@@ -7,7 +7,7 @@ export const Button: FC<Props> = ({
   htmlType = "submit",
   className,
   type = "primary",
-  shape = "round",
+  shape,
   children,
 }) => {
   const prefixCls = "btn";
