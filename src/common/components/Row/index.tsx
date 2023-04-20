@@ -1,10 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { Props } from "./models";
 
-interface Props {
-  children: ReactNode;
-  gutter?: number;
-}
-
-export const Row: FC<Props> = ({ children, gutter }) => (
-  <div className="d-flex flex-wrap">{children}</div>
+export const Row: FC<Props> = ({ children, gutter, className }) => (
+  <div className={`${className} d-flex flex-wrap`}>{children}</div>
 );
