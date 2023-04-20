@@ -1,27 +1,27 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { Props } from "./models";
+import { Typography } from "../Typography";
 
-interface Columns {
-  key: string;
-  dataIndex: string;
-  label: string;
-  render?: (record: any) => ReactNode;
-}
-
-interface Props {
-  data: any[];
-  columns: Columns[];
-}
+import "./style.less";
 
 export const Table: FC<Props> = ({ data, columns }) => (
-  <table>
+  <table className="table">
     <thead>
-      {columns.map((column) => (
-        <th key={column.key}>{column.label}</th>
-      ))}
+      <tr>
+        {columns.map((column) => (
+          <th key={column.key}>
+            <Typography.Label
+              title={column.label}
+              color="secondary"
+              fontWeight={700}
+            />
+          </th>
+        ))}
+      </tr>
     </thead>
     <tbody>
       {data.map((record) => (
-        <tr>
+        <tr key={record.dateTime}>
           {columns.map((column) =>
             column.render ? (
               column.render(record)
