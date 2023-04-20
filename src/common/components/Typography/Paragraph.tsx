@@ -1,8 +1,25 @@
 import { FC } from "react";
+import classNames from "clsx";
+import { ParagraphProps } from "./models";
 
-interface Props {
-  title: string;
-}
-export const Paragraph: FC<Props> = ({ title }) => (
-  <p className="typography-paragraph">{title}</p>
-);
+export const Paragraph: FC<ParagraphProps> = ({
+  title,
+  className,
+  fontSize = 16,
+  fontWeight = 400,
+  color = "primary",
+}) => {
+  const prefixCls = "typography";
+  const classes = classNames(
+    prefixCls,
+    "typography-paragraph",
+    {
+      [`${prefixCls}-size-${fontSize}`]: fontSize,
+      [`${prefixCls}-weight-${fontWeight}`]: fontWeight,
+      [`${prefixCls}-color-${color}`]: color,
+    },
+    className
+  );
+
+  return <p className={classes}>{title}</p>;
+};

@@ -1,28 +1,28 @@
+@import 'common/assets/style/core/colors.less';
+
 .typography {
   &-link {
-    font-weight: 500;
-    color: #fff;
-    font-size: 18px;
-    &:hover {
-      color: #ff4a57;
-      transition: 0.3s ease;
+    text-decoration: none;
+  }
+  &-size{
+    &-16{
+      font-size: 16px;
+    }
+    &-32{
+      font-size: 32px;
     }
   }
-  &-title {
-    margin-top: 50px;
-    font-size: 62px;
-    font-weight: 700;
-    overflow: hidden;
-    border-right: 5px solid transparent;
-    white-space: nowrap;
-    -webkit-animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end 7;
-    animation: typing 3.5s steps(30, end), blink-caret 0.5s step-end 7;
+  &-weight{
+    &-400{
+      font-weight: 400;
+    }
   }
-  &-paragraph {
-    font-size: 26px;
-    line-height: 40px;
-    font-weight: 300;
-    margin-bottom: 50px;
-    color: #dfdfdf;
+  &-color{
+    &-primary{
+      color: @text-primary;
+    }
+    &-secondary{
+      color: @text-secondary
+    }
   }
 }
