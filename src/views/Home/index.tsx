@@ -1,12 +1,12 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Card, Container, Row } from "common/components";
 import { Logs } from "./modules/Logs";
 import { Form } from "./modules/Form";
+import { Data, mockData } from "./modules/Logs/data";
 
 export const Home: FC = () => {
-  const [data, setData] = useState(
-    JSON.parse(localStorage.getItem("logs") as string)
-  );
+  const logs = JSON.parse(localStorage.getItem("logs") as string);
+  const [data, setData] = useState<Data[]>([...logs, ...mockData]);
 
   return (
     <Container>

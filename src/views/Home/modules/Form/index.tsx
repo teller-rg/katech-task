@@ -1,6 +1,7 @@
-import { FC, useRef } from "react";
-import { Button, Input } from "common/components";
-import { formatDate, formatTime } from "helpers/formatDate";
+import { FC } from "react";
+import { Button, Card, Input, Row, Typography } from "common/components";
+import { formatDate } from "helpers/formatDate";
+import { Data, mockData } from "../Logs/data";
 
 interface Props {
   setData: any;
@@ -12,17 +13,16 @@ export const Form: FC<Props> = ({ setData }) => {
 
     const { description, timeSpent } = e.target;
 
-    let logs: any = JSON.parse(localStorage.getItem("logs") as string);
+    let logs: Data[] = JSON.parse(localStorage.getItem("logs") as string);
 
     const dateTime = new Date();
     const date = formatDate(dateTime);
-    const time = formatTime(dateTime);
 
     const newLog = {
       description: description.value,
       timeSpent: timeSpent.value,
       date,
-      time,
+      dateTime,
     };
 
     if (logs) {
@@ -32,7 +32,7 @@ export const Form: FC<Props> = ({ setData }) => {
     }
 
     localStorage.setItem("logs", JSON.stringify(logs));
-    setData(logs);
+    setData([...logs, ...mockData]);
 
     e.target.reset();
   };
@@ -40,19 +40,23 @@ export const Form: FC<Props> = ({ setData }) => {
   return (
     <aside>
       <form onSubmit={addLog}>
-        <Input
-          type="text"
-          name="description"
-          placeholder="Description"
-          label="Description"
-        />
-        <Input
-          type="text"
-          name="timeSpent"
-          placeholder="Time spent"
-          label="Time spent"
-        />
-        <Button type="submit">Add</Button>
+        <Row className="align-center m-b-3">
+          <Card col={4}>
+            <Typography.Label title="Description" />
+          </Card>
+          <Input type="text" name="description" placeholder="Description" />
+        </Row>
+        <Row className="align-center m-b-3">
+          <Card col={4}>
+            <Typography.Label title="Time spent" />
+          </Card>
+          <Input type="text" name="timeSpent" placeholder="Time spent" />
+        </Row>
+        <Row className="justify-end">
+          <Card col={8}>
+            <Button>Add</Button>
+          </Card>
+        </Row>
       </form>
     </aside>
   );
