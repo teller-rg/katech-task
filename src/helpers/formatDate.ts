@@ -1,3 +1,16 @@
-export const formatDate = (date: any) => `${date.getDate()}.${((date.getMonth() < 10 ? "0" : "") + (date.getMonth() + 1))}.${date.getFullYear()}`;
+export const formatDate = (date: Date) => {
+  const day = date.getDate();
+  const month = date.getMonth();
+  const year = date.getFullYear();
 
-export const formatTime  = (date: any) => `${date.getHours()}:${date.getMinutes()}`;
+  return `${`${day < 10 ? "0" : ""}${day}`}.${`${month + 1 < 10 ? "0" : ""}${
+    month + 1
+  }`}.${year}`;
+};
+
+export const formatTime = (date: Date) => {
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+
+  return `${hour}:${`${minute < 10 ? "0" : ""}${minute}`}`;
+};
