@@ -1,5 +1,6 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
+import { Props } from "./models";
 
-export const Container: FC<{ children: ReactNode }> = ({ children }) => (
-  <div className="container">{children}</div>
+export const Container: FC<Props> = ({ children, className }) => (
+  <div className={`${className} container`}>{children}</div>
 );
