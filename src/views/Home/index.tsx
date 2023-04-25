@@ -5,7 +5,7 @@ import { Form } from "./modules/Form";
 import { Data, mockData } from "./modules/Logs/data";
 
 export const Home: FC = () => {
-  const logs = JSON.parse(localStorage.getItem("logs") as string);
+  const logs = JSON.parse(localStorage.getItem("logs") as string) ?? [];
   const [data, setData] = useState<Data[]>([...logs, ...mockData]);
 
   return (
